@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+.css-aap07l-MuiTypography-root {
+  font-size: 3.75rem;
+}
+@media (max-width: 600px) {
+  .css-aap07l-MuiTypography-root {
+    font-size: 2.5rem;
+  }
+}
