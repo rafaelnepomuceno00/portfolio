@@ -8,7 +8,13 @@ html {
 .css-aap07l-MuiTypography-root {
   font-size: 3.75rem;
 }
+.css-1dyc527 {
+  font-size: 3.75rem;
+}
 @media (max-width: 600px) {
+  .css-1dyc527 {
+    font-size: 2.5rem;
+  }
   .css-aap07l-MuiTypography-root {
     font-size: 2.5rem;
   }
