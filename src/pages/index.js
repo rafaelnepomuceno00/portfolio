@@ -8,17 +8,19 @@ import Home from "../components/Home";
 import About from "../components/About";
 import Projects from "../components/Projects";
 import Contact from "../components/Contact";
+import useLanguage from "../language";
 
 const IndexPage = () => {
+  const { language, toggleLanguage } = useLanguage();
   return (
     <>
       <ThemeProvider theme={theme}>
-        <ResponsiveAppBar></ResponsiveAppBar>
+        <ResponsiveAppBar language={language} toggleLanguage={toggleLanguage} />
         <Container maxWidth="xl">
-          <Home />
-          <About />
-          <Projects />
-          <Contact />
+          <Home language={language} />
+          <About language={language} />
+          <Projects language={language} />
+          <Contact language={language} />
         </Container>
       </ThemeProvider>
     </>

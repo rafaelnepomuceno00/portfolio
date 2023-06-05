@@ -18,7 +18,7 @@ const HomeTheme = createTheme({
     },
   },
 });
-function Home() {
+function Home(props) {
   return (
     <>
       <ThemeProvider theme={HomeTheme}>
@@ -27,23 +27,29 @@ function Home() {
             variant="h2"
             sx={{ overflow: "hidden", textOverflow: "ellipsis" }}
           >
-            Olá, eu sou Rafael Nepomuceno!
+            {props.language === "ptbr"
+              ? "Olá, eu sou Rafael Nepomuceno!"
+              : "Hello, I am Rafael Nepomuceno!"}
           </Typography>
           <Typography variant="h5" sx={{ paddingTop: "5%" }}>
-            Um desenvolvedor web focado em Frontend construindo a parte visual e
-            lógica de sites e aplicações web.
+            {props.language === "ptbr"
+              ? "Um desenvolvedor web focado em Frontend construindo a parte visual e lógica de sites e aplicações web."
+              : "A web developer focused on frontend builds the visual and logical aspects of websites and web applications."}
           </Typography>
           <br />
           <ThemeProvider theme={theme}>
             <Button
               sx={{ marginRight: "1%" }}
               variant="contained"
-              href="#projetos"
+              href={props.language === "ptbr" ? "#projetos" : "#projects"}
             >
-              Projetos
+              {props.language === "ptbr" ? "Projetos" : "Projects"}
             </Button>
-            <Button variant="contained" href="#contato">
-              Contato
+            <Button
+              variant="contained"
+              href={props.language === "ptbr" ? "#contato" : "#contact"}
+            >
+              {props.language === "ptbr" ? "Contato" : "Contact"}
             </Button>
           </ThemeProvider>
         </Paper>

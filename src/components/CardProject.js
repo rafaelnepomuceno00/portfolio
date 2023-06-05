@@ -30,11 +30,11 @@ export default function CardProject(props) {
         </CardContent>
         <CardActions sx={{ display: "flex", justifyContent: "center" }}>
           <Button size="small" variant="contained" href={`${props.linkTest}`}>
-            Teste
+            {props.language === "ptbr" ? "Teste" : "Try it"}
           </Button>
           {props.linkRepo ? (
             <Button size="small" variant="contained" href={`${props.linkRepo}`}>
-              Repositório
+              {props.language === "ptbr" ? "Repositório" : "Repository"}
             </Button>
           ) : null}
         </CardActions>

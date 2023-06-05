@@ -25,7 +25,7 @@ const AboutTheme = createTheme({
     },
   },
 });
-function About() {
+function About(props) {
   return (
     <>
       <ThemeProvider theme={AboutTheme}>
@@ -38,11 +38,13 @@ function About() {
             justifyContent: "center",
           }}
         >
-          <Typography variant="h4">Sobre mim</Typography>
+          <Typography id="about" variant="h4">
+            {props.language === "ptbr" ? "Sobre mim" : "About Me  "}
+          </Typography>
           <Typography variant="h6">
-            Aqui você encontrará mais informações sobre mim, o que faço e minhas
-            habilidades atuais, principalmente em termos de programação e
-            tecnologia.
+            {props.language === "ptbr"
+              ? "Aqui você encontrará mais informações sobre mim, o que faço e minhas habilidades atuais, principalmente em termos de programação e tecnologia."
+              : "Here you will find more information about me, what I do, and my current skills, primarily in terms of programming and technology."}
           </Typography>
           <Paper
             elevation={0}
@@ -61,7 +63,7 @@ function About() {
               }}
             >
               <Typography variant="h6" sx={{ textAlign: "center" }}>
-                Me conheça!
+                {props.language === "ptbr" ? "Me conheça!" : "Know me!"}
               </Typography>
               <Typography
                 variant="p"
@@ -71,34 +73,29 @@ function About() {
                   minHeight: "250px",
                 }}
               >
-                Sou um desenvolvedor front-end com uma capacidade excepcional de
-                aprendizado rápido. Com quase 3 anos de experiência no mercado
-                de programação em aplicações web, adquiri um sólido conhecimento
-                em diversas linguagens e tecnologias relevantes para o
-                desenvolvimento front-end. Minha paixão pela programação e minha
-                sede de conhecimento me motivam constantemente a buscar novas
-                habilidades e acompanhar as tendências mais recentes no campo da
-                tecnologia. Estou sempre pronto para enfrentar desafios e
-                entregar soluções criativas e eficientes para projetos web.
+                {props.language === "ptbr"
+                  ? "Sou um desenvolvedor front-end com uma capacidade de aprendizado rápido. Com quase 3 anos de experiência no mercado de programação em aplicações web, adquiri um sólido conhecimento em diversas linguagens e tecnologias relevantes para o desenvolvimento front-end. Minha paixão pela programação e minha sede de conhecimento me motivam constantemente a buscar novas habilidades e acompanhar as tendências mais recentes no campo da tecnologia. Estou sempre pronto para enfrentar desafios e entregar soluções criativas e eficientes para projetos web."
+                  : "I am a front-end developer with ability to learn quickly. With nearly 3 years of experience in the web application programming market, I have gained solid knowledge in various languages and technologies relevant to front-end development. My passion for programming and thirst for knowledge constantly motivate me to acquire new skills and keep up with the latest trends in the field of technology. I am always ready to take on challenges and deliver creative and efficient solutions for web projects."}
               </Typography>
               <br />
               <br />
               <ThemeProvider theme={theme}>
                 <Button variant="contained" href="#contato">
-                  Contato
+                  {props.language === "ptbr" ? "Contato" : "Contact"}
                 </Button>
               </ThemeProvider>
             </Paper>
             <Paper
               elevation={3}
               sx={{
+                padding: "2%",
                 minHeight: "250px",
                 maxWidth: "340px",
                 backgroundColor: "#D3E4CD",
               }}
             >
               <Typography sx={{ textAlign: "center" }} variant="h6">
-                Minhas Skills
+                {props.language === "ptbr" ? "Minhas Skills" : "My skills"}
               </Typography>
               <br />
               <Chip label="HTML" variant="outlined" />{" "}

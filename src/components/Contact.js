@@ -20,16 +20,17 @@ const ContactTheme = createTheme({
     },
   },
 });
-function Contact() {
+function Contact(props) {
   return (
     <>
       <ThemeProvider theme={ContactTheme}>
         <Paper id="contato">
           <Typography
+            id="contact"
             variant="h4"
             sx={{ overflow: "hidden", textOverflow: "ellipsis" }}
           >
-            Entre em contato:
+            {props.language === "ptbr" ? "Entre em contato:" : "Contact me:"}
           </Typography>
           <Paper
             elevation={0}

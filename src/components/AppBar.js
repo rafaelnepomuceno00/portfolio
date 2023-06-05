@@ -12,8 +12,9 @@ import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import profile from "../images/profile.png";
 import { Slide, useScrollTrigger } from "@mui/material";
+import ptbrImage from "../images/ptbr.png";
+import enusImage from "../images/enus.png";
 
-const pages = ["home", "sobre", "projetos", "contato"];
 function HideOnScroll(props) {
   const { children, window } = props;
   const trigger = useScrollTrigger({
@@ -27,7 +28,11 @@ function HideOnScroll(props) {
   );
 }
 
-function ResponsiveAppBar() {
+function ResponsiveAppBar(props) {
+  const pages =
+    props.language === "ptbr"
+      ? ["home", "sobre", "projetos", "contato", "ptbr"]
+      : ["home", "about", "projects", "contact", "enus"];
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -90,21 +95,59 @@ function ResponsiveAppBar() {
                   display: { xs: "block", md: "none" },
                 }}
               >
-                {pages.map((page) => (
-                  <MenuItem
-                    key={page.toUpperCase()}
-                    onClick={handleCloseNavMenu}
-                  >
-                    <Button
-                      key={page.toUpperCase()}
-                      onClick={handleCloseNavMenu}
-                      sx={{ display: "block" }}
-                      href={`#${page}`}
-                    >
-                      {page}
-                    </Button>
-                  </MenuItem>
-                ))}
+                {pages.map((page) => {
+                  if (page === "ptbr" || page === "enus") {
+                    return (
+                      <MenuItem
+                        sx={{
+                          display: "flex",
+                          justifyContent: "center",
+                          textAlign: "center",
+                        }}
+                        key={page.toUpperCase()}
+                        onClick={() => {
+                          props.toggleLanguage();
+                          handleCloseNavMenu();
+                        }}
+                      >
+                        <Button
+                          key={page.toUpperCase()}
+                          onClick={() => {
+                            props.toggleLanguage();
+                            handleCloseNavMenu();
+                          }}
+                          sx={{
+                            display: "flex",
+                            justifyContent: "center",
+                            textAlign: "center",
+                          }}
+                        >
+                          <img
+                            style={{ width: "25px", height: "15px" }}
+                            src={page === "ptbr" ? ptbrImage : enusImage}
+                            alt={`${page}`}
+                          />
+                        </Button>
+                      </MenuItem>
+                    );
+                  } else {
+                    return (
+                      <MenuItem
+                        key={page.toUpperCase()}
+                        onClick={handleCloseNavMenu}
+                      >
+                        <Button
+                          key={page.toUpperCase()}
+                          onClick={handleCloseNavMenu}
+                          sx={{ display: "block" }}
+                          href={`#${page}`}
+                        >
+                          {page}
+                        </Button>
+                      </MenuItem>
+                    );
+                  }
+                })}
               </Menu>
             </Box>
             <Typography
@@ -131,16 +174,39 @@ function ResponsiveAppBar() {
                 justifyContent: "flex-end",
               }}
             >
-              {pages.map((page) => (
-                <Button
-                  key={page.toUpperCase()}
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "block" }}
-                  href={`#${page}`}
-                >
-                  {page}
-                </Button>
-              ))}
+              {pages.map((page) => {
+                if (page === "ptbr" || page === "enus") {
+                  return (
+                    <Button
+                      key={page.toUpperCase()}
+                      onClick={props.toggleLanguage}
+                      sx={{
+                        my: 2,
+                        color: "white",
+                        display: "flex",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <img
+                        style={{ width: "25px", height: "15px" }}
+                        src={page === "ptbr" ? ptbrImage : enusImage}
+                        alt={`${page}`}
+                      />
+                    </Button>
+                  );
+                } else {
+                  return (
+                    <Button
+                      key={page.toUpperCase()}
+                      onClick={handleCloseNavMenu}
+                      sx={{ my: 2, color: "white", display: "block" }}
+                      href={`#${page}`}
+                    >
+                      {page}
+                    </Button>
+                  );
+                }
+              })}
             </Box>
           </Toolbar>
         </Container>
