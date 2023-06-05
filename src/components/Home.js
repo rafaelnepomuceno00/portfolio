@@ -1,5 +1,11 @@
 import { ThemeProvider } from "@emotion/react";
-import { Button, Paper, Typography, createTheme } from "@mui/material";
+import {
+  Button,
+  Paper,
+  Typography,
+  createTheme,
+  responsiveFontSizes,
+} from "@mui/material";
 import React from "react";
 import theme from "../theme";
 
@@ -18,19 +24,23 @@ const HomeTheme = createTheme({
     },
   },
 });
+let h2Style = createTheme();
+h2Style = responsiveFontSizes(h2Style);
 function Home(props) {
   return (
     <>
       <ThemeProvider theme={HomeTheme}>
         <Paper id="home">
-          <Typography
-            variant="h2"
-            sx={{ overflow: "hidden", textOverflow: "ellipsis" }}
-          >
-            {props.language === "ptbr"
-              ? "Olá, eu sou Rafael Nepomuceno!"
-              : "Hello, I am Rafael Nepomuceno!"}
-          </Typography>
+          <ThemeProvider theme={h2Style}>
+            <Typography
+              variant="h2"
+              sx={{ overflow: "hidden", textOverflow: "ellipsis" }}
+            >
+              {props.language === "ptbr"
+                ? "Olá, eu sou Rafael Nepomuceno!"
+                : "Hello, I am Rafael Nepomuceno!"}
+            </Typography>
+          </ThemeProvider>
           <Typography variant="h5" sx={{ paddingTop: "5%" }}>
             {props.language === "ptbr"
               ? "Um desenvolvedor web focado em Frontend construindo a parte visual e lógica de sites e aplicações web."
