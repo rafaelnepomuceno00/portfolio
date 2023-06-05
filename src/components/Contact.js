@@ -90,7 +90,7 @@ function Contact() {
               variant="h6"
               noWrap
               component="a"
-              href="https://web.whatsapp.com/send?phone=5538991624199"
+              href="https://wa.me/5538991624199"
               sx={{
                 mr: 2,
                 display: { xs: "flex", md: "flex" },
